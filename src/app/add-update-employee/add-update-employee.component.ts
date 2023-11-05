@@ -38,14 +38,22 @@ export class AddUpdateEmployeeComponent implements OnInit {
   }
 
   getAndSetEmployee() {
-    db.employees.get(+this.empId())
+    db.employees
+    .get(+this.empId())
     .then((data: any) => {
-      this.form.setValue(data);
+      if (!data) {
+        this.router.navigate(['/']);
+      } else {
+        this.form.patchValue(data);
+      }
+    })
+    .catch((err) => {
+      this.openErrorSnackBar(err);
+      this.router.navigate(['/'])
     })
   }
 
   onDateSelect() {
-    console.log(this.form.value.startDate)
     this.startDate.set(this.form.value.startDate);
   }
 
