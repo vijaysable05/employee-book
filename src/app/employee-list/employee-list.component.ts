@@ -32,7 +32,7 @@ export class EmployeeListComponent {
 
   async getCurrentEmployees() {
     return db.employees
-    .filter((item: Employee) => item.startDate === '' || item.endDate === '')
+    .filter((item: Employee) => Boolean(!item.endDate))
     .toArray();
   }
 
