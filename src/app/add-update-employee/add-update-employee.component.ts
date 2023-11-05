@@ -62,6 +62,7 @@ export class AddUpdateEmployeeComponent implements OnInit {
   }
 
   onSave() {
+    if (!this.form.value.name) return;
     db.employees.add(this.form.value)
     .then(() => {
       this.snackBar.open('Employee added successfully', 'close', {
