@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-snack-bar-container {
+    &.blue-snackbar {
+      --mdc-snackbar-container-color: #EDF8FF;
+      --mat-mdc-snack-bar-button-color: #1DA1F2;
+      --mdc-snackbar-supporting-text-color: #1DA1F2;
+      background-color: #EDF8FF;
+      color: #1DA1F2;
+      font-size: 14px;
+      button {
+        font-size: 14px;
+        background-color: #1DA1F2;
+        color: white !important;
+      }
+    }
+  }

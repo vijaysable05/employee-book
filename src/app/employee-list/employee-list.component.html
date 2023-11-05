@@ -1,0 +1,36 @@
+
+<div class="flex flex-col gap-2 h-full w-full">
+    <div class="flex flex-col justify-center items-center w-full h-full gap-2">
+        <div *ngIf="!currentEmps()?.length && !prevEmps()?.length" class="flex flex-col justify-center items-center gap-2">
+            <img src="assets/images/emp-not-found.svg" alt="not found">
+            <p>No employee records found</p>
+        </div>
+        <div *ngIf="currentEmps()?.length || prevEmps()?.length" class="flex flex-col gap-2 w-full h-full pt-16">
+            <div class="flex flex-col gap-1">
+                <div class="w-full p-4 bg-slate-300 text-blue text-base">
+                    <p>Current Employees</p>
+                </div>
+                <div *ngFor="let item of currentEmps()" (click)="onEmpClick(item.id)" class="flex flex-col gap-1 p-2 cursor-pointer">
+                    <p class="text-base font-medium">{{item.name}}</p>
+                    <p class="text-[#949C9E] text-sm">{{item.role}}</p>
+                    <p class="text-[#949C9E] text-sm">From {{item.startDate | date:'dd MMMM, yyyy'}}</p>
+                    <hr class="mt-2">
+                </div>
+            </div>
+            <div class="flex flex-col gap-1">
+                <div class="w-full p-4 bg-slate-300 text-blue text-base">
+                    <p>Previous Employees</p>
+                </div>
+                <div *ngFor="let item of prevEmps()" (click)="onEmpClick(item.id)" class="flex flex-col gap-1 p-2 cursor-pointer">
+                    <p class="text-base font-medium">{{item.name}}</p>
+                    <p class="text-[#949C9E] text-sm">{{item.role}}</p>
+                    <p class="text-[#949C9E] text-sm">{{item.startDate | date:'dd MMMM, yyyy'}} - {{item.endDate | date:'dd MMMM, yyyy'}}</p>
+                    <hr class="mt-2">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button (click)="onAddClick()" mat-raised-button class="rounded-lg bg-blue text-white w-[50px] h-[50px] fixed bottom-10 right-10">
+    <mat-icon>add</mat-icon>
+</button>
